@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 
-import {
-  TextEditor,
-  extractMentions,
-  serialize,
-  serializeHtml,
-  validate,
-} from "./TextEditor";
+import { TextEditor, serialize, serializeHtml, validate } from "./TextEditor";
 import { exampleContents } from "./fauxApi";
 
 const contentSamples = ["c1", "c2", "c3", "c4", "c5"];
@@ -27,7 +21,6 @@ const App = () => {
     console.log("AST:", value);
     console.log("serialize:", serialize(validate(value)));
     console.log("serializeHtml:", serializeHtml(validate(value)));
-    console.log("extractMentions", extractMentions(value));
   };
 
   return (
@@ -63,6 +56,7 @@ const App = () => {
         value={value}
         onChange={setValue}
         onPost={handlePost}
+        mentions={undefined}
       />
       <h2>Debugger</h2>
       <pre>{JSON.stringify(value, null, 2)}</pre>

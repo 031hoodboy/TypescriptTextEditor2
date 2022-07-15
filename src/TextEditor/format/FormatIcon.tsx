@@ -1,15 +1,23 @@
-import React from 'react';
-import { useSlate } from 'slate-react';
+import React from "react";
+import { useSlate } from "slate-react";
 
-import { Icon } from '../../ui';
-import { testIsFormatActive, toggleFormat } from './utils';
+import { Icon } from "../../ui";
+import { testIsFormatActive, toggleFormat } from "./utils";
 
-export const FormatIcon = ({ icon, format, tooltip, type = 'mark' }) => {
+type Props = {
+  icon: any;
+  format: any;
+  tooltip: any;
+  type: string;
+};
+
+export const FormatIcon = (props: Props) => {
+  const { icon, format, tooltip, type = "mark" } = props;
   const editor = useSlate();
 
   const isActive = testIsFormatActive(editor, format, type);
 
-  const handleClick = (event) => {
+  const handleClick = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     toggleFormat(editor, format, type);
   };

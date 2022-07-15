@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
-import 'tippy.js/dist/tippy.css';
+import React, { memo } from "react";
+import "tippy.js/dist/tippy.css";
 
-import Tippy from '@tippyjs/react';
+import Tippy from "@tippyjs/react";
 
 export const Tooltip = memo(({ children, tooltip }) => {
   if (!tooltip) {
