@@ -2,19 +2,8 @@ import { ContentAst } from "./TextEditor";
 
 export const exampleContents: Record<string, ContentAst> = {
   c1: [], // empty
-  c2: [
-    // simple
-    {
-      type: "p",
-      children: [
-        {
-          text: "This is a simple Paragraph",
-        },
-      ],
-    },
-  ],
+  c2: [],
   c3: [
-    // simple + mark modifiers
     {
       type: "p",
       children: [
@@ -41,15 +30,14 @@ export const exampleContents: Record<string, ContentAst> = {
     },
   ],
   c4: [
-    // nested
     {
-      type: "ul",
+      type: "ol",
       children: [
         {
           type: "li",
           children: [
             {
-              text: "first item",
+              text: "first",
             },
           ],
         },
@@ -57,7 +45,7 @@ export const exampleContents: Record<string, ContentAst> = {
           type: "li",
           children: [
             {
-              text: "second bolded item",
+              text: "second",
               bold: true,
             },
           ],
@@ -67,31 +55,11 @@ export const exampleContents: Record<string, ContentAst> = {
   ], // everything
   c5: [
     {
-      type: "p",
+      type: "h1",
+      align: "center",
       children: [
         {
-          text: "This is editable ",
-        },
-        {
-          text: "rich",
-          bold: true,
-        },
-        {
-          text: " text, ",
-        },
-        {
-          text: "much",
-          italic: true,
-        },
-        {
-          text: " better than a ",
-        },
-        {
-          text: "<textarea>",
-          code: true,
-        },
-        {
-          text: "!",
+          text: "Test",
         },
       ],
     },
@@ -99,119 +67,61 @@ export const exampleContents: Record<string, ContentAst> = {
       type: "p",
       children: [
         {
-          text: "Since it's rich text, you can do things like turn a selection of text ",
+          text: "this is sample text",
         },
+      ],
+    },
+    {
+      type: "p",
+      children: [
         {
           text: "bold",
           bold: true,
         },
-        {
-          text: ", or add a semantically rendered block quote in the middle of the page, like this:",
-        },
       ],
     },
     {
-      type: "blockquote",
+      type: "p",
       children: [
         {
-          text: "A wise quote.",
+          text: "italic",
+          italic: true,
         },
       ],
     },
     {
       type: "p",
-      align: "center",
       children: [
         {
-          text: "Try it out for yourself!",
+          text: "both",
+          bold: true,
+          italic: true,
+          underline: true,
         },
       ],
     },
     {
-      type: "ol",
+      type: "p",
+      align: "left",
       children: [
         {
-          type: "li",
-          children: [
-            {
-              text: "Try mentioning ch",
-            },
-            {
-              text: "aracters, like ",
-              bold: true,
-            },
-            {
-              type: "mention",
-              entity: {
-                id: "m1",
-                type: "user",
-              },
-              children: [
-                {
-                  text: "R2-D2",
-                },
-              ],
-            },
-            {
-              text: " or ",
-              bold: true,
-            },
-            {
-              type: "mention",
-              entity: {
-                id: "m2",
-                type: "user",
-              },
-              children: [
-                {
-                  text: "Mace Windu",
-                },
-              ],
-            },
-            {
-              text: "!",
-              bold: true,
-            },
-          ],
-          align: "center",
+          bold: true,
+          italic: true,
+          underline: true,
+          text: "",
+        },
+      ],
+    },
+    {
+      type: "p",
+      children: [
+        {
+          bold: true,
+          italic: true,
+          underline: true,
+          text: "underline",
         },
       ],
     },
   ],
 };
-
-export const mentions = [
-  "Aayla Secura",
-  "Adi Gallia",
-  "Admiral Dodd Rancit",
-  "Admiral Firmus Piett",
-  "Admiral Gial Ackbar",
-  "Admiral Ozzel",
-  "Admiral Raddus",
-  "Admiral Terrinald Screed",
-  "Admiral Trench",
-  "Admiral U.O. Statura",
-  "Agen Kolar",
-  "Agent Kallus",
-  "Aiolin and Morit Astarte",
-  "Aks Moe",
-  "Almec",
-  "Alton Kastle",
-  "Amee",
-  "AP-5",
-  "Armitage Hux",
-  "Artoo",
-  "Arvel Crynyd",
-  "Asajj Ventress",
-  "Aurra Sing",
-  "AZI-3",
-  "Bala-Tik",
-  "Barada",
-  "Bargwill Tomder",
-  "Baron Papanoida",
-  "Barriss Offee",
-  "Baze Malbus",
-  "Bazine Netal",
-  "BB-8",
-  "BB-9E",
-];

@@ -7,7 +7,7 @@ import {
   serializeHtml,
   validate,
 } from "./TextEditor";
-import { exampleContents, mentions } from "./fauxApi";
+import { exampleContents } from "./fauxApi";
 
 const contentSamples = ["c1", "c2", "c3", "c4", "c5"];
 import "./styles.css";
@@ -60,7 +60,6 @@ const App = () => {
           "right",
           "justify",
         ]}
-        mentions={mentions}
         value={value}
         onChange={setValue}
         onPost={handlePost}
