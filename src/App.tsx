@@ -56,7 +56,6 @@ const App = () => {
         value={value}
         onChange={setValue}
         onPost={handlePost}
-        mentions={undefined}
       />
       <h2>Debugger</h2>
       <pre>{JSON.stringify(value, null, 2)}</pre>

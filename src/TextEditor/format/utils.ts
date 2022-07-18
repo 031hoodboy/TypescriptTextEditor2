@@ -1,18 +1,21 @@
-import { Editor, Element, Transforms } from 'slate';
+import { BaseEditor, Editor, Element, Transforms } from "slate";
 
-import { LIST_TYPES, TEXT_ALIGN_TYPES } from './constants';
+import { LIST_TYPES, TEXT_ALIGN_TYPES } from "./constants";
 
-const getBlockType = (format) =>
-  TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type';
+const getBlockType = (format: string) =>
+  TEXT_ALIGN_TYPES.includes(format) ? "align" : "type";
 
-export const testIsBlock = (type) => type === 'block';
+export const testIsBlock = (type: string) => type === "block";
 
-export const testIsMarkActive = (editor, format) => {
+export const testIsMarkActive = (
+  editor: BaseEditor,
+  format: string | number
+) => {
   const marks = Editor.marks(editor);
   return marks ? marks[format] === true : false;
 };
 
-export const testIsBlockActive = (editor, format) => {
+export const testIsBlockActive = (editor: BaseEditor, format: string) => {
   const { selection } = editor;
   if (!selection) {
     return false;
@@ -25,26 +28,30 @@ export const testIsBlockActive = (editor, format) => {
           !Editor.isEditor(n) &&
           Element.isElement(n) &&
           n[blockType] === format,
-      }),
+      })
     );
     return !!match;
   }
 };
 
-export const testIsFormatActive = (editor, format, type) => {
+export const testIsFormatActive = (
+  editor: BaseEditor,
+  format: string,
+  type: string
+) => {
   const isBlock = testIsBlock(type);
   const test = isBlock ? testIsBlockActive : testIsMarkActive;
   return test(editor, format);
 };
 
-export const toggleFormat = (editor, format, type) => {
+export const toggleFormat = (editor: BaseEditor, format: any, type: string) => {
   const isBlock = testIsBlock(type);
   const toggle = isBlock ? toggleBlock : toggleMark;
   toggle(editor, format);
 };
 
-export const toggleMark = (editor, format) => {
-  const isActive = testIsFormatActive(editor, format, 'mark');
+export const toggleMark = (editor: BaseEditor, format: string) => {
+  const isActive = testIsFormatActive(editor, format, "mark");
 
   if (isActive) {
     Editor.removeMark(editor, format);
@@ -53,8 +60,8 @@ export const toggleMark = (editor, format) => {
   }
 };
 
-const toggleBlock = (editor, format) => {
-  const isActive = testIsFormatActive(editor, format, 'block');
+const toggleBlock = (editor: BaseEditor, format: string) => {
+  const isActive = testIsFormatActive(editor, format, "block");
   const isList = LIST_TYPES.includes(format);
 
   Transforms.unwrapNodes(editor, {
@@ -72,7 +79,7 @@ const toggleBlock = (editor, format) => {
     };
   } else {
     newProperties = {
-      type: isActive ? 'p' : isList ? 'li' : format,
+      type: isActive ? "p" : isList ? "li" : format,
     };
   }
   Transforms.setNodes<Element>(editor, newProperties);

@@ -3,7 +3,14 @@ import "tippy.js/dist/tippy.css";
 
 import Tippy from "@tippyjs/react";
 
-export const Tooltip = memo(({ children, tooltip }) => {
+type Props = {
+  children: any;
+  tooltip: any;
+};
+
+export const Tooltip = memo((props: Props) => {
+  const { children, tooltip } = props;
+
   if (!tooltip) {
     return children;
   }
