@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { TextEditor, serialize, serializeHtml, validate } from "./TextEditor";
 import { exampleContents } from "./fauxApi";
-import Header from "./components/Header.tsx";
+import Header from "./components/Header";
 import styled from "styled-components";
 import map from "./assets/map.png";
 
