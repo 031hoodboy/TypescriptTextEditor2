@@ -1,0 +1,13 @@
+
+{
+  "settings":{
+    "import/resolver":{
+      "typescript":{}
+    }
+  },
+
+"rules":{
+    "react/jsx-filename-extension":["warn",{"extensions":[".tsx"]} 
+  },
+
+}

@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-export const useToggleFormat = (formats) => {
+export const useToggleFormat = (formats: string | any[]) => {
   const [enableFormat, setEnableFormat] = useState(formats.length > 0);
 
   const toggleFormat = () => setEnableFormat(!enableFormat);
